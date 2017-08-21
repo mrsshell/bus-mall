@@ -1,0 +1,16 @@
+header, aside, section,footer,{
+  display: block;
+}
+.img{
+  display: inline-block;
+
+}
+#title{
+  font-family: 'Patua One', cursive;
+}
+#subtitle{
+  font-family: 'Patua One', cursive;
+}
+.smallFont{
+  font-family: 'Crimson Text', serif;
+}

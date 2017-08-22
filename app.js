@@ -106,3 +106,5 @@ function clickCount(event) {
   }
 }
 cilck
+
+var myBarChart = new Chart()

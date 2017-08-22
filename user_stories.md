@@ -3,3 +3,13 @@ The suburban professionals riding the Bellevue to Seattle public transit are a v
 There is cross section of the population who could be shopping for themselves, their children, or even their grandchildren. To better isolate the demographics they offer a wide array of options, hoping to gather more information about the user to only target the things they might me interested in. They will customized the and named it after the bus rout so the user will have a unique experience.
 
 After a series of tests, they will better provide a dynamic front facing selection to customize their website and gear it to working people who commute. Once the information is gathered, they will offer options and features geared to the busy professionals who will be the anchor for the future industry of Bus Mall.  
+
+ user1): Amanda, who is in marketing, lives alone with her dog.
+
+ user2): Josh, who is a software engineer, and is thinking about starting a family.
+
+ user3): Daniel, a financial consultant has a 35 year old son who still lives at home.
+
+ user4): Cynthia, on the board of the Pacific Northwest Ballet, and a regular contributor to the arts.
+
+ user5): Hahn, works at Amazon and is looking for a startup ecommerce company that will offer better opportunities for advancement.

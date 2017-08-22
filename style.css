@@ -1,15 +1,35 @@
 header, aside, section,footer,{
   display: block;
 }
-.img{
-  display: inline-block;
+#loadPics{
+  display:inline-block;
+  padding-left: 80px;
+  padding-top: 200px;
+
 
 }
+#firstPic{
+  max-width: 300px;
+  max-height: 200px
+}
+#secondPic{
+  max-width: 300px;
+  max-height: 200px
+}
+#thirdPic{
+ max-width: 300px;
+ max-height: 200px;
+}
+
 #title{
   font-family: 'Patua One', cursive;
+  font-size: 80px;
+  color:#002b80;
 }
 #subtitle{
   font-family: 'Patua One', cursive;
+  font-size: 60px;
+  color:#002b80;
 }
 .smallFont{
   font-family: 'Crimson Text', serif;

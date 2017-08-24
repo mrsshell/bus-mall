@@ -3,7 +3,7 @@
 var maxClicks = 25;
 var totalClicks = 0;
 
-function Item (itemName, filepath, id) {
+function Item (itemName, filePath, timesShown, timesClicked, id) {
   this.itemName = itemName;
   this.filePath = filePath;
   this.timesShown = 0;
@@ -15,9 +15,9 @@ var allItems = [];
 
 var itemName = ['bag', 'boots', 'wine-glass', 'banana', 'bathroom', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can'];
 
-var filePath = ['img/bag.jpg', 'img/boots.jpg', 'img/wine-glass.jpg','img/banana.jpg', 'img/bathroom.jpg', 'img/breakfast.jpg','img/bubblegum.jpg', 'img/chair.jpg', 'img/cthulhu.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg','img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.png', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/usb.gif', 'img/water-can.jpg'];
+var path = ['img/bag.jpg', 'img/boots.jpg', 'img/wine-glass.jpg','img/banana.jpg', 'img/bathroom.jpg', 'img/breakfast.jpg','img/bubblegum.jpg', 'img/chair.jpg', 'img/cthulhu.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg','img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.png', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/usb.gif', 'img/water-can.jpg'];
 
-var id = ['bag.jpg','boots.jpg', 'wine-glass.jpg', 'banana.jpg', 'bathroom.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', ' tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg'];
+var ids = ['bag.jpg','boots.jpg', 'wine-glass.jpg', 'banana.jpg', 'bathroom.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', ' tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg'];
 
 function createItems() {
   for (var i = 0; i < itemName.length; i++) {
@@ -25,31 +25,33 @@ function createItems() {
   }
 }
 createItem();
-//stopped here
+
 var lastRound = [];
 var thisRound = [];
 
 function makeThreeImages(){
-  for (var i = 0; i < 3; i++) {
+  for (var i = 1; i < 4; i++) {
     var indexNum = Math.floor(Math.random() * allItems.length);
     if (lastRound.includes(indexNum) || thisRound.includes(indexNum)){
       i--;
     } else {
       thisRound.push(indexNum);
       allItems[indexNum].timesShown++;
-      var linkedImage = document.getElementById('image-' + 1);
-      linkedImage.setAttribute('src');
+      var linkedImage = document.getElementById('image-' + i);
+      linkedImage.setAttribute('src', allItems[indexNum].filePath);
+      linkedImage.setAttribute('itemIdx', indexNum);
     }
   }
+  lastRound = thisRound;
+  thisRound = [];
 }
 makeThreeImages();
-//stopped here
+
 for (var i = 0; i < document.getElelementsByClassName('clickable').length; i++) {
   var image = document.getElementById('image-' + (i + 1));
   image.addEventListener('click', onClick);
 }
 
-//this is good from here
 function onClick (event) {
   var itemIdx = parseInt(event.target.getAttribute('itemIdx'));
   var itemIWant = allItems[itemIdx];
@@ -57,16 +59,16 @@ function onClick (event) {
   makeThreeImages();
   totalClicks++;
 
-if (totalClicks === maxClicks) {
-  for (var i = 0; i < document.getElelementsByClassName['clikcable'].length; i++){
-    var image = document.getElementById('image' +(i + 1));
-    image.removeEventListener('click', onClick);
-  }
-  var list = document.getElementById('list');
-  for(var j = 0; j < allItems.length; j++){
-    var li = document.createElement('li');
-    li.innerText = allItems[j].itemName = 'was clicked' + allItems[j].timesClicked + 'times';
-    list.appendChild('li');
+  if (totalClicks === maxClicks) {
+    for (var i = 0; i < document.getElelementsByClassName['clikcable'].length; i++){
+      var image = document.getElementById('image' + (i + 1));
+      image.removeEventListener('click', onClick);
+    }
+    var list = document.getElementById('list');
+    for(var j = 0; j < allItems.length; j++){
+      var li = document.createElement('li');
+      li.innerText = allItems[j].itemName = 'was clicked' + allItems[j].timesClicked + 'times';
+      list.appendChild('li');
     }
   }
 }

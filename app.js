@@ -1,81 +1,120 @@
 'use strict';
 
 var maxClicks = 25;
-// var productArray = [];
 var totalClicks = 0;
-var allItems = [];
 
-function Item (itemName, path, id) {
+function Item (itemName, filePath, timesShown, timesClicked, id) {
   this.itemName = itemName;
-  this.path = path;
-  this.id = id;
+  this.filePath = filePath;
   this.timesShown = 0;
   this.timesClicked = 0;
-  // this.allItems.push(this);
+  this.id = id;
+  allItems.push(this);
 }
+var allItems = [];
+var countedClicks = [];
 
 var itemName = ['bag', 'boots', 'wine-glass', 'banana', 'bathroom', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can'];
 
 var path = ['img/bag.jpg', 'img/boots.jpg', 'img/wine-glass.jpg','img/banana.jpg', 'img/bathroom.jpg', 'img/breakfast.jpg','img/bubblegum.jpg', 'img/chair.jpg', 'img/cthulhu.jpg', 'img/dog-duck.jpg', 'img/dragon.jpg', 'img/pen.jpg','img/pet-sweep.jpg', 'img/scissors.jpg', 'img/shark.jpg', 'img/sweep.png', 'img/tauntaun.jpg', 'img/unicorn.jpg', 'img/usb.gif', 'img/water-can.jpg'];
 
-function createItem() {
+var ids = ['bag.jpg','boots.jpg', 'wine-glass.jpg', 'banana.jpg', 'bathroom.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', ' tauntaun.jpg', 'unicorn.jpg', 'usb.gif', 'water-can.jpg'];
+
+function createItems() {
   for (var i = 0; i < itemName.length; i++) {
-    var obj = new Item(itemName[i], path[i], i);
-    allItems.push(obj);
+    new Item(itemName[i], path[i], ids[i]);
   }
 }
-createItem();
+createItems();
 
 var lastRound = [];
 var thisRound = [];
-function makeThree(){
-  divElement.innerHtml = '';
-  for (var i = 0; i < 3; i++) {
+
+function makeThreeImages(){
+  for (var i = 1; i < 4; i++) {
     var indexNum = Math.floor(Math.random() * allItems.length);
     if (lastRound.includes(indexNum) || thisRound.includes(indexNum)){
       i--;
-
+    } else {
       thisRound.push(indexNum);
       allItems[indexNum].timesShown++;
-      var divElement = document.getElementById('imageDiv');
-      var imageElement =document.createElement('img');
-
-      imageElement.setAttribute('id') = 'image' + ( i + 1 );
-      imageElement.setAttribute('calss') = 'clickable';
-      imageElement.src = indexNum.path;
-      divElement.appendChild(imageElement);
-
-      // linkedImage.setAttribute('src',allItems[indexNum].path);
-      // linkedImage.setAttribute('index',indexNum);
-      // linkedImage.addEventListener('click', onClick);
+      var linkedImage = document.getElementById('image-' + i);
+      linkedImage.setAttribute('src', allItems[indexNum].filePath);
+      linkedImage.setAttribute('itemIdx', indexNum);
     }
   }
   lastRound = thisRound;
+  thisRound = [];
 }
-makeThree();
 
-function onClick(event){
-  for (var i = 0; i < allItems.length; i ++) {
-    if (allItems[i].path === event.target.src)
-      allItems[i].thmesCilcked += 1;
-    totalClicks++;
+for (var i = 0; i < document.getElementsByClassName('clickable').length; i++) {
+  var image = document.getElementById('image-' + (i + 1));
+  image.addEventListener('click', onClick);
+}
+makeThreeImages();
+
+function onClick (event) {
+  var itemIdx = parseInt(event.target.getAttribute('itemIdx'));
+  var itemIWant = allItems[itemIdx];
+  itemIWant.timesClicked++;
+  makeThreeImages();
+  totalClicks++;
+
+  if (totalClicks === maxClicks) {
+    for (var i = 0; i < document.getElementsByClassName('clickable').length; i++){
+      var image = document.getElementById('image-' + (i + 1));
+      image.removeEventListener('click', onClick);
+    }
+    for (var i = 0; i < allItems.length; i++) {
+      countedClicks.push(allItems[i].timesClicked);
+    }
+    getChart();
+
+    var list = document.getElementById('list');
+    for(var j = 0; j < allItems.length; j++){
+      var li = document.createElement('li');
+      li.innerText = allItems[j].itemName + ' ' + 'was clicked' + ' ' + allItems[j].timesClicked + ' ' + 'times';
+      list.appendChild(li);
+    }
   }
+}
 
-  var itemIdx = parseInt(event.target.id);
-  var itemIwant = allItems[itemIdx];
-  itemIwant.timesClicked += 1;
-  makeThree();
-
-  // for(var i = 0; i < 3; i++) {
-  //   var image = document.getElementById('image-' + (i + 1));
-  //   image.removeEventListener('click', onClick);
-  // }
-  var list = document.getElementByTagName('list');
-  for(var j = 0; j < allItems.length; j++){
-    var li = document.createElement('li');
-    allItems[i].itemName = 'was clicked' + allItems[i].timesClicked + 'times';
-    appendChild.list('li');
-  }
-  // li.innerText = 'Done Clicking';
-
+function getChart() {
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['bag', 'boots', 'wine-glass', 'banana', 'bathroom', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can'],
+      datasets: [{
+        label: '# of Votes',
+        data: countedClicks,
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 206, 86)',
+          'rgb(75, 192, 192)',
+          'rgb(153, 102, 255)',
+          'rgb(255, 159, 64)'
+        ],
+        borderColor: [
+          'rgba(255,99,132)',
+          'rgba(54, 162, 235)',
+          'rgba(255, 206, 86)',
+          'rgba(75, 192, 192)',
+          'rgba(153, 102, 255)',
+          'rgba(255, 159, 64)'
+        ],
+        borderWidth: 2
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero:true
+          }
+        }]
+      }
+    }
+  });
 }

@@ -72,3 +72,60 @@ function onClick (event) {
     }
   }
 }
+//going to build a chart here
+function something  () {
+  var  ctx = document.getElementById('canvas'.getContext('2d');
+  var chart = new Chart (ctx
+
+}
+
+//this is kind of the properties it should have
+options:
+title: has commas
+legend:
+scales:
+axis
+
+
+//this is the event handler how many clicks - and then set up three new pick- but I THINK i already did this
+function handleClick(event) {
+  if (totalClicks < maxClicks){
+    event.preventDefault();
+    totalClicks++:
+    for (var i = 0; i < allItems.length; i++) {
+      if (allItems[i].name === event.target.id) {
+        allItems[i].timesClicked++;
+      }
+    }
+    removeOld();
+    makeThreeImages();
+
+  }
+  else {
+    removeOld();
+
+  }
+}
+//store things in a string array - parseInt and then access through with stringify .
+//store the click array and and display arrray in one object
+
+//localStorage.setItem(JSON.stringify('click', 'display'))
+
+
+//object.timesShown
+//array = getItem(JSON.parse(timesShown))
+//array[i]+= new timesShown
+//send back to localStorage
+
+
+//tracking
+//[timesShown, timesClicked]  var storedTimesShown = [] var storedTimesClicked = []
+
+//if (storage is empty)
+//stored timesShown = timesShown
+//store it();
+//else
+//stores timesShown + timesShown
+//store it();
+
+var clickData =

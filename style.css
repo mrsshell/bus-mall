@@ -8,15 +8,15 @@ header, aside, section,footer,{
 
 
 }
-#firstPic{
+#image-1{
   max-width: 300px;
   max-height: 200px
 }
-#secondPic{
+#image-2{
   max-width: 300px;
   max-height: 200px
 }
-#thirdPic{
+#image-3{
  max-width: 300px;
  max-height: 200px;
 }

@@ -70,12 +70,12 @@ function onClick (event) {
     }
     getChart();
 
-    // var list = document.getElementById('list');
-    // for(var j = 0; j < allItems.length; j++){
-    //   var li = document.createElement('li');
-    //   li.innerText = allItems[j].itemName + ' ' + 'was clicked' + allItems[j].timesClicked + ' ' + 'times';
-    //   list.appendChild(li);
-    // }
+    var list = document.getElementById('list');
+    for(var j = 0; j < allItems.length; j++){
+      var li = document.createElement('li');
+      li.innerText = allItems[j].itemName + ' ' + 'was clicked' + ' ' + allItems[j].timesClicked + ' ' + 'times';
+      list.appendChild(li);
+    }
   }
 }
 

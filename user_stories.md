@@ -1,15 +1,8 @@
-The suburban professionals riding the Bellevue to Seattle public transit are a very particular group of people. They are refined, have a high net worth and have access to disposable income. They crowd the bus everyday with standing room only, and are either on their laptop or phone and have absolutely no interaction with each other. A new online Store-Internet business in Downtown Bellevue believes that the best way to attract their interest is to offer free Wi-Fi on the 550 and eventually on all bus routs to and from Seattle with the heaviest traffic. The acceptance of terms will auto load the home page for this new online website. The goal is to make the page interesting at first glance , so they don't move somewhere else. While the customer is in the site, they also want to know what they might respond to, considering there is a high percentage who have adult children who still reside in their homes.
+Bus-Mall
+Focus group: As a user I want the site to be easy to navigate, with clear instructions.
 
-There is cross section of the population who could be shopping for themselves, their children, or even their grandchildren. To better isolate the demographics they offer a wide array of options, hoping to gather more information about the user to only target the things they might me interested in. They will customized the and named it after the bus rout so the user will have a unique experience.
+Marketing: From a marketing aspect I want to see product displayed in a clear and attractive way.
 
-After a series of tests, they will better provide a dynamic front facing selection to customize their website and gear it to working people who commute. Once the information is gathered, they will offer options and features geared to the busy professionals who will be the anchor for the future industry of Bus Mall.  
+Development: As a developer I want to create a interactive catalog that supports the design aspects, and gives clear information on the business side.
 
- user1): Amanda, who is in marketing, lives alone with her dog.
-
- user2): Josh, who is a software engineer, and is thinking about starting a family.
-
- user3): Daniel, a financial consultant has a 35 year old son who still lives at home.
-
- user4): Cynthia, on the board of the Pacific Northwest Ballet, and a regular contributor to the arts.
-
- user5): Hahn, works at Amazon and is looking for a startup ecommerce company that will offer better opportunities for advancement.
+Business Strategy: As a start-up business I want to be able track results and have it displayed in a graph, or a list or both.

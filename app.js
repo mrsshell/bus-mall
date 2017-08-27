@@ -3,6 +3,10 @@
 var maxClicks = 25;
 var totalClicks = 0;
 
+if (localStorage.getItem('clicks')){
+  var countedClicks = JSON.parse(localStorage.getItem('clicks'));
+}
+
 function Item (itemName, filePath, timesShown, timesClicked, id) {
   this.itemName = itemName;
   this.filePath = filePath;
@@ -11,8 +15,8 @@ function Item (itemName, filePath, timesShown, timesClicked, id) {
   this.id = id;
   allItems.push(this);
 }
-var allItems = [];
 var countedClicks = [];
+var allItems = [];
 
 var itemName = ['bag', 'boots', 'wine-glass', 'banana', 'bathroom', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can'];
 
@@ -38,9 +42,9 @@ function makeThreeImages(){
     } else {
       thisRound.push(indexNum);
       allItems[indexNum].timesShown++;
-      var linkedImage = document.getElementById('image-' + i);
-      linkedImage.setAttribute('src', allItems[indexNum].filePath);
-      linkedImage.setAttribute('itemIdx', indexNum);
+      var getImage = document.getElementById('image-' + i);
+      getImage.setAttribute('src', allItems[indexNum].filePath);
+      getImage.setAttribute('itemIdx', indexNum);
     }
   }
   lastRound = thisRound;
@@ -53,10 +57,12 @@ for (var i = 0; i < document.getElementsByClassName('clickable').length; i++) {
 }
 makeThreeImages();
 
-function onClick (event) {
+function onClick(event) {
   var itemIdx = parseInt(event.target.getAttribute('itemIdx'));
-  var itemIWant = allItems[itemIdx];
-  itemIWant.timesClicked++;
+  var myChoice = allItems[itemIdx];
+  myChoice.timesClicked++;
+  // countedClicks[itemIdx]++;
+  event.preventDefault();
   makeThreeImages();
   totalClicks++;
 
@@ -68,14 +74,16 @@ function onClick (event) {
     for (var i = 0; i < allItems.length; i++) {
       countedClicks.push(allItems[i].timesClicked);
     }
+
     getChart();
 
     var list = document.getElementById('list');
     for(var j = 0; j < allItems.length; j++){
       var li = document.createElement('li');
-      li.innerText = allItems[j].itemName + ' ' + 'was clicked' + ' ' + allItems[j].timesClicked + ' ' + 'times';
+      li.innerText = allItems[j].itemName + ' ' + 'selected' + ' ' + allItems[j].timesClicked + ' ' + 'times';
       list.appendChild(li);
     }
+    localStorage.setItem('timesClicked',JSON.stringify(countedClicks));
   }
 }
 
@@ -94,7 +102,21 @@ function getChart() {
           'rgb(255, 206, 86)',
           'rgb(75, 192, 192)',
           'rgb(153, 102, 255)',
-          'rgb(255, 159, 64)'
+          'rgb(255, 159, 64)',
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 206, 86)',
+          'rgb(75, 192, 192)',
+          'rgb(153, 102, 255)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 206, 86)',
+          'rgb(75, 192, 192)',
+          'rgb(153, 102, 255)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)'
         ],
         borderColor: [
           'rgba(255,99,132)',
@@ -102,7 +124,21 @@ function getChart() {
           'rgba(255, 206, 86)',
           'rgba(75, 192, 192)',
           'rgba(153, 102, 255)',
-          'rgba(255, 159, 64)'
+          'rgba(255, 159, 64)',
+          'rgba(255,99, 132)',
+          'rgba(54, 162, 235)',
+          'rgba(255, 206, 86)',
+          'rgba(75, 192, 192)',
+          'rgba(153, 102, 255)',
+          'rgba(255, 159, 64)',
+          'rgba(255,99, 132)',
+          'rgba(54, 162, 235)',
+          'rgba(255, 206, 86)',
+          'rgba(75, 192, 192)',
+          'rgba(153, 102, 255)',
+          'rgba(255, 159, 64)',
+          'rgba(255,99, 132)',
+          'rgba(54, 162, 235)'
         ],
         borderWidth: 2
       }]

@@ -6,6 +6,7 @@ body{
 }
 
 header{
+  padding-top: 10%;
   background-color:#e3f5f7;
 }
 
@@ -19,8 +20,9 @@ aside{
 }
 #loadPics{
   display:inline-block;
-  margin-left: 20px;
-  align: center;
+  margin-left: 215px;
+  margin-top: 20px;
+  text-align: : center;
   padding-right: 180px;
   padding-top: 300px;
 
@@ -46,6 +48,7 @@ aside{
 }
 
 #title{
+  text-align: center;
   font-family: 'Patua One', cursive;
   font-size: 80px;
   color:#002b80;
@@ -53,6 +56,11 @@ aside{
 h2
 {
   font-family: 'Patua One', cursive;
+  text-align: center;
+  text-shadow:#2f6970;
   font-size: 60px;
   color:#002b80;
+}
+fieldset{
+  border-color:#002b80;
 }

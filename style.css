@@ -1,66 +1,73 @@
-header, aside, section,footer,{
+header, aside, article,footer,{
   display: block;
 }
 body{
   background-color: #b1c4c6;
 }
-
 header{
-  padding-top: 10%;
   background-color:#e3f5f7;
+  border: 5px solid #002b80;
 }
-
+article{
+  display:block;
+  margin-top: 50px;
+  margin-left: 270px;
+  font-family: 'Crimson Text', serif;
+  font-size: 25px;
+  font-weight: 25px;
+  color:#002b80;
+  border: 5px solid #002b80;
+  padding-left: 70px;
+  background-color:#e3f5f7;
+  margin-right: 300px;
+  text-shadow: 0.5px 0.5px 1px #b1c4c6;
+}
 aside{
   display: block;
   float: right;
   font-family: 'Crimson Text', serif;
   font-size: 22px;
-  font-weight: 3px;
+  font-weight: 5px;
   color:#002b80;
 }
-#loadPics{
-  display:inline-block;
-  margin-left: 215px;
-  margin-top: 20px;
-  text-align: : center;
-  padding-right: 180px;
-  padding-top: 300px;
-
-
-}
 #image-1{
-  max-width: 400px;
-  max-height: 200px;
-  border-color: #002b80;
-  border-width: 2px;
+  margin-left: 300px;
+  max-width: 420px;
+  max-height: 220px;
+  border: 5px solid #002b80;
 }
 #image-2{
-  max-width: 400px;
-  max-height: 200px;
-  border-color: #002b80;
-  border-width: 2px;
+  max-width: 420px;
+  max-height: 220px;
+  border: 5px solid #002b80;
 }
 #image-3{
- max-width: 400px;
- max-height: 200px;
- border-color: #002b80;
- border-width: 2px;
+  max-width: 420px;
+  max-height: 220px;
+  border: 5px solid #002b80;
 }
-
 #title{
   text-align: center;
   font-family: 'Patua One', cursive;
-  font-size: 80px;
+  font-size: 100px;
   color:#002b80;
+  text-shadow: 2px 2px 7px #b1c4c6;
 }
-h2
-{
+h2{
+  margin-top: 0;
   font-family: 'Patua One', cursive;
   text-align: center;
   text-shadow:#2f6970;
   font-size: 60px;
   color:#002b80;
+  text-shadow: 2px 2px 7px #b1c4c6;
 }
 fieldset{
   border-color:#002b80;
+}
+canvas{
+  max-width: 900px;
+  max-height: 700px;
+  background-color:#e3f5f7;
+  margin-top: 5px;
 }
